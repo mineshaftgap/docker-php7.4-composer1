@@ -1,7 +1,7 @@
 FROM php:7.4-fpm-alpine AS builder
 LABEL IF Fulcrum "fulcrum@ifsight.net"
 
-ENV BUILDDATE 202012181700
+ENV BUILDDATE 202012211505
 
 RUN STARTTIME=$(date "+%s")                                                                      && \
 echo "################## [$(date)] Building Interim ##################"                          && \
