@@ -1,5 +1,4 @@
 FROM php:7.4-fpm-alpine AS builder
-LABEL IF Fulcrum "fulcrum@ifsight.net"
 
 ENV BUILDDATE 202012211505
 
@@ -12,7 +11,7 @@ echo "################## [$(date)] Install PHP Extensions ##################"   
 FILE=/install-php-extensions                                                                     && \
 URL=https://github.com/mlocati/docker-php-extension-installer/releases/latest/download$FILE      && \
 EXT="@composer-1 gd gettext igbinary mcrypt memcached mysqli opcache"                            && \
-EXT="$EXT pdo_mysql pdo_pgsql redis soap sockets xdebug zip"                                     && \
+EXT="$EXT pdo_mysql pdo_pgsql pgsql redis soap sockets xdebug zip"                               && \
 curl -L $URL > $FILE                                                                             && \
 sh $FILE $EXT                                                                                    && \
 echo "################## [$(date)] Make PHP user ##################"                             && \
@@ -31,5 +30,6 @@ echo "################## [$(date)] Done ##################"                     
 echo "################## Elapsed: $(expr $(date "+%s") - $STARTTIME) seconds ##################"
 
 FROM scratch
+LABEL IF Fulcrum "fulcrum@ifsight.net"
 COPY --from=builder / /
 ADD healthcheck.sh /healthcheck.sh
