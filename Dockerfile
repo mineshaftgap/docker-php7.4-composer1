@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine AS builder
+FROM php:7.4-fpm-alpine3.12 AS builder
 
 ENV BUILDDATE 202107050903
 
