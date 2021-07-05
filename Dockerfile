@@ -1,6 +1,6 @@
 FROM php:7.4-fpm-alpine3.12 AS builder
 
-ENV BUILDDATE 202107050932
+ENV BUILDDATE 202107051003
 
 RUN STARTTIME=$(date "+%s")                                                                      && \
 echo "################## [$(date)] Building Interim ##################"                          && \
